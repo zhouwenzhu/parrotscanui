@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-04-14 12:26+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/Airdrop.js:91
+#~ msgid "Account"
+#~ msgstr "Account"
+
+#: src/components/Airdrop.js:130
+msgid "Address"
+msgstr ""
+
+#: src/components/Faucet.js:65
+msgid "Airdrop"
+msgstr "Airdrop"
+
+#: src/components/Airdrop.js:158
+#: src/components/Faucet.js:71
+msgid "AirDrop Claim Error"
+msgstr "出现错误，可能原因是网络中断、选择了错误的网络、gas 费不足或用户取消，导致交易失败。"
+
+#: src/components/Airdrop.js:120
+msgid "AirDropDesc"
+msgstr "你可以在Arbitrum主网上领取 1 个 Parrot 代币，每个钱包地址仅可领取一次。为了防止大量人员领取代币，领取过程中需要支付少量的 gas。"
+
+#: src/components/Airdrop.js:144
+#: src/components/Faucet.js:58
+msgid "Claim"
+msgstr "Claim"
+
+#: src/components/Airdrop.js:153
+msgid "Claimed"
+msgstr "你已经领取空投"
+
+#: src/components/Airdrop.js:80
+#~ msgid "Connect Wallet"
+#~ msgstr "\"Connect Wallet"
+
+#: src/components/Faucet.js:42
+msgid "Faucet Desc1"
+msgstr "你可以领取 100 个测试 Parrot 代币，用于部署节点。每个钱包地址仅能领取一次。为防止大量人员领取代币，领取前必须在你的地址在主网上拥有至少一个代币余额。"
+
+#: src/components/Faucet.js:62
+msgid "Faucet Desc2"
+msgstr "Parrot主网空投访问地址"
+
+#: src/components/Airdrop.js:117
+msgid "Parrot Airdrop"
+msgstr "Parrot Airdrop"
+
+#: src/components/Faucet.js:39
+msgid "Parrot Test Net Faucet"
+msgstr "Parrot Test Net Faucet"
+
+#: src/components/Airdrop.js:70
+#~ msgid "Switch Chain"
+#~ msgstr "Switch Chain"

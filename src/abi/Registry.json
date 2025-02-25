@@ -1,0 +1,1617 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_instances",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "priceMon",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "priceSec",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct IRegistry.CPU",
+                "name": "cpu",
+                "type": "tuple"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "priceMon",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "priceSec",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "model",
+                        "type": "string"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct IRegistry.GPU",
+                "name": "gpu",
+                "type": "tuple"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "priceMon",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "priceSec",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "num",
+                        "type": "uint64"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct IRegistry.MEM",
+                "name": "mem",
+                "type": "tuple"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "priceMon",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "priceSec",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "num",
+                        "type": "uint64"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct IRegistry.DISK",
+                "name": "disk",
+                "type": "tuple"
+            }
+        ],
+        "name": "AddNode",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            }
+        ],
+        "name": "DelNode",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "ip",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "domain",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "port",
+                "type": "string"
+            }
+        ],
+        "name": "Register",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint64",
+                        "name": "id",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "cp",
+                        "type": "address"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.CPU",
+                        "name": "cpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.GPU",
+                        "name": "gpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.MEM",
+                        "name": "mem",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.DISK",
+                        "name": "disk",
+                        "type": "tuple"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "exist",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "sold",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "avail",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct IRegistry.Node",
+                "name": "node",
+                "type": "tuple"
+            }
+        ],
+        "name": "add_node",
+        "outputs": [
+            {
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            }
+        ],
+        "name": "del_node",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "gInfo",
+        "outputs": [
+            {
+                "internalType": "uint64",
+                "name": "cpNumber",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "nodeGlobal",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "nodeUsed",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "memGlobal",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "diskGlobal",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "memUsed",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "diskUsed",
+                "type": "uint64"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "a",
+                "type": "address"
+            }
+        ],
+        "name": "get",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "addr",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ip",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "domain",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "port",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint64",
+                                "name": "id",
+                                "type": "uint64"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "cp",
+                                "type": "address"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.CPU",
+                                "name": "cpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.GPU",
+                                "name": "gpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.MEM",
+                                "name": "mem",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.DISK",
+                                "name": "disk",
+                                "type": "tuple"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "exist",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "sold",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "avail",
+                                "type": "bool"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.Node[]",
+                        "name": "nodes",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct IRegistry.CP",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            }
+        ],
+        "name": "get_node",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint64",
+                        "name": "id",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "cp",
+                        "type": "address"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.CPU",
+                        "name": "cpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.GPU",
+                        "name": "gpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.MEM",
+                        "name": "mem",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.DISK",
+                        "name": "disk",
+                        "type": "tuple"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "exist",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "sold",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "avail",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct IRegistry.Node",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "instances",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint64",
+                "name": "start",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint64",
+                "name": "num",
+                "type": "uint64"
+            }
+        ],
+        "name": "listCP",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "addr",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ip",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "domain",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "port",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint64",
+                                "name": "id",
+                                "type": "uint64"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "cp",
+                                "type": "address"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.CPU",
+                                "name": "cpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.GPU",
+                                "name": "gpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.MEM",
+                                "name": "mem",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.DISK",
+                                "name": "disk",
+                                "type": "tuple"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "exist",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "sold",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "avail",
+                                "type": "bool"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.Node[]",
+                        "name": "nodes",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct IRegistry.CP[]",
+                "name": "",
+                "type": "tuple[]"
+            },
+            {
+                "internalType": "uint64",
+                "name": "",
+                "type": "uint64"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            }
+        ],
+        "name": "list_node",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint64",
+                        "name": "id",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "cp",
+                        "type": "address"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.CPU",
+                        "name": "cpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.GPU",
+                        "name": "gpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.MEM",
+                        "name": "mem",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.DISK",
+                        "name": "disk",
+                        "type": "tuple"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "exist",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "sold",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "avail",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct IRegistry.Node[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "addr",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ip",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "domain",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "port",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint64",
+                                "name": "id",
+                                "type": "uint64"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "cp",
+                                "type": "address"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.CPU",
+                                "name": "cpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.GPU",
+                                "name": "gpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.MEM",
+                                "name": "mem",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.DISK",
+                                "name": "disk",
+                                "type": "tuple"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "exist",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "sold",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "avail",
+                                "type": "bool"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.Node[]",
+                        "name": "nodes",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct IRegistry.CP",
+                "name": "cp",
+                "type": "tuple"
+            }
+        ],
+        "name": "register",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bool",
+                "name": "avail",
+                "type": "bool"
+            }
+        ],
+        "name": "set_avail",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "cp",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "id",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bool",
+                "name": "sold",
+                "type": "bool"
+            }
+        ],
+        "name": "set_sold",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "address",
+                        "name": "addr",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ip",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "domain",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "port",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uNode",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uMem",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "nDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "uint64",
+                        "name": "uDisk",
+                        "type": "uint64"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint64",
+                                "name": "id",
+                                "type": "uint64"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "cp",
+                                "type": "address"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.CPU",
+                                "name": "cpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "string",
+                                        "name": "model",
+                                        "type": "string"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.GPU",
+                                "name": "gpu",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.MEM",
+                                "name": "mem",
+                                "type": "tuple"
+                            },
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceMon",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "priceSec",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint64",
+                                        "name": "num",
+                                        "type": "uint64"
+                                    }
+                                ],
+                                "internalType": "struct IRegistry.DISK",
+                                "name": "disk",
+                                "type": "tuple"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "exist",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "sold",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "avail",
+                                "type": "bool"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.Node[]",
+                        "name": "nodes",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct IRegistry.CP",
+                "name": "cp",
+                "type": "tuple"
+            }
+        ],
+        "name": "updatecp",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint64",
+                        "name": "id",
+                        "type": "uint64"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "cp",
+                        "type": "address"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.CPU",
+                        "name": "cpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "model",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.GPU",
+                        "name": "gpu",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.MEM",
+                        "name": "mem",
+                        "type": "tuple"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "priceMon",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "priceSec",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint64",
+                                "name": "num",
+                                "type": "uint64"
+                            }
+                        ],
+                        "internalType": "struct IRegistry.DISK",
+                        "name": "disk",
+                        "type": "tuple"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "exist",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "sold",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "avail",
+                        "type": "bool"
+                    }
+                ],
+                "internalType": "struct IRegistry.Node",
+                "name": "node",
+                "type": "tuple"
+            }
+        ],
+        "name": "updatenode",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

@@ -1,0 +1,69 @@
+import React from "react";
+import AppState from './contexts/AppState';
+import { LanguageProvider } from "./i18n";
+import "@rainbow-me/rainbowkit/styles.css";
+import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { WagmiProvider } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, base,sepolia,bsc } from "wagmi/chains";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const projectId = "fe62b424c4ab666f47d64744e0b3dca0";
+const cmemo = {
+  id: 985,
+  name: 'CMEMO',
+  iconUrl: "./img/memo.png",
+  nativeCurrency: {name: 'CMEMO', symbol: 'CMEMO', decimals: 18},
+  rpcUrls: {
+      default: {http: ['https://chain.metamemo.one:8501/']},
+  },
+  blockExplorers: {
+      default: {name: 'Metamemo', url: 'https://scan.metamemo.one:8080/'},
+  },
+  contracts: {
+      "MemoChain-MEMO (MEMO)": {
+          address: "0xeB8eec5a2dBf6e6f4Cc542ad31CCe706f8f80419",
+      },
+      "MEMO USDT (USDT)": {
+          address: "0xD8c9b5332b8a584f974BA47e7694BBDfbF9C25c8",
+      },
+  },
+};
+
+const devMemo = {
+  id: 2985,
+  name: 'DEVCMEMO',
+  iconUrl: "./img/memo.png",
+  nativeCurrency: {name: 'CMEMO', symbol: 'CMEMO', decimals: 18},
+  rpcUrls: {
+      default: {http: ['https://devchain.metamemo.one:8501/']},
+  },
+  blockExplorers: {
+      default: {name: 'Metamemo', url: 'https://dev.memoscan.org/'},
+  },
+  contracts: {
+  },
+};
+const config = getDefaultConfig({
+  appName: "gird",
+  projectId: projectId,
+  chains: [devMemo,cmemo], // mainnet,sepolia,bsc, arbitrum sepolia
+  ssr: true,
+});
+
+const queryClient = new QueryClient();
+
+function Providers({ children }) {
+  return (
+    <AppState>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider>
+            <LanguageProvider>{children}</LanguageProvider>
+          </RainbowKitProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </AppState>
+  );
+}
+
+export default Providers;
