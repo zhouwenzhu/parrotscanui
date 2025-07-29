@@ -164,3 +164,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 reportWebVitals(0);
 reportWebVitals(1);
 reportWebVitals(2);
+reportWebVitals(3);
