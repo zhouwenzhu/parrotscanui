@@ -168,3 +168,4 @@ reportWebVitals(3);
 reportWebVitals(4);
 reportWebVitals(5);
 reportWebVitals(6);
+reportWebVitals(7);
