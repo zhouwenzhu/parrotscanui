@@ -170,3 +170,4 @@ reportWebVitals(5);
 reportWebVitals(6);
 reportWebVitals(7);
 reportWebVitals(8);
+reportWebVitals(9);
