@@ -1,6 +1,4 @@
-
 import React, { useEffect, useState } from "react";
-import { Trans } from "@lingui/macro";
 
 import { readContract } from "@wagmi/core";
 import { useWriteContract } from "wagmi";
